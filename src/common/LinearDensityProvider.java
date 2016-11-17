@@ -16,7 +16,7 @@ public class LinearDensityProvider implements ITerrainDensityProvider {
     }
 
     public float valueAt(float x) {
-        return (a*x+b);
+        return (a*x+b)*2-1;
     }
 
 }

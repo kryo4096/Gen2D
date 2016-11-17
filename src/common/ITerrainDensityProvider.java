@@ -7,8 +7,8 @@ package common;
  **/
 public interface ITerrainDensityProvider {
 
-    default BakedTerrainDensityProvider bake(int height, float mult){
-        return new BakedTerrainDensityProvider(height,this,mult);
+    default BakedTerrainDensityProvider bake(int height,float scale){
+        return new BakedTerrainDensityProvider(height,this,scale);
     }
 
     float valueAt(float f);

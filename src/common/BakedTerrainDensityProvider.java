@@ -10,10 +10,13 @@ class BakedTerrainDensityProvider {
         return densityArray[y];
     }
 
-    BakedTerrainDensityProvider(int size, final ITerrainDensityProvider tdp, float mult){
+    BakedTerrainDensityProvider(int size, final ITerrainDensityProvider tdp, float scale){
         densityArray = new float[size];
+        float unit = scale/size;
+        for(int i = 0; i < size; i++) {
+            densityArray[i] = (tdp.valueAt(i*unit));
 
-        for(int i = 0; i < size; i++) densityArray[i] = (tdp.valueAt(1 / (float) i)*2-1)*mult;
+        }
 
 
     }
