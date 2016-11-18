@@ -7,8 +7,15 @@ package common;
  **/
 public interface ITerrainDensityProvider {
 
-    default BakedTerrainDensityProvider bake(int height,float scale){
-        return new BakedTerrainDensityProvider(height,this,scale);
+    default float[] bake(int height,float scale){
+        float[] densityArray = new float[height];
+        float unit = scale/height;
+        for(int i = 0; i < height; i++) {
+            densityArray[i] = (valueAt(i*unit));
+
+        }
+
+        return densityArray;
     }
 
     float valueAt(float f);

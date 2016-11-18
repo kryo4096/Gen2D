@@ -20,14 +20,14 @@ public class NoiseGen {
     public float[][] generateNoiseMap(int w, int h,ITerrainDensityProvider idp, int iterations, int size, float deviation, float verticalChange){
 
         System.out.println("Baking density provider...");
-        BakedTerrainDensityProvider bread = idp.bake(h,verticalChange); //lol funny
+        float[] bread = idp.bake(h,verticalChange); //lol funny
 
         System.out.println("Generating noisemap...");
 
         float[][] map = new float[w][h];
         for(int x = 0; x<w;x++) {
             for(int y = 0; y<h;y++) {
-                map[x][y] = gauss()*deviation+bread.valueAt(y);
+                map[x][y] = gauss()*deviation+bread[y];
             }
         }
 
